@@ -11,6 +11,7 @@ Before, running the above program, plese rewrite the `rewrite-rules1` of `lib/ma
 
 ```
 (define $rewrite-rules1 {[id 1##t]})
+```
 
 # Simplification
 
