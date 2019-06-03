@@ -93,8 +93,18 @@
          (sum (map (lambda [$σ] (. R'_(σ 1)_j_1~i R'_(σ 2)_(σ 3)_k~j R'_(σ 4)_(σ 5)_i~k)) os))))))
 
 "S start"
-S
+;S
 "S end"
+
+(define $S'
+  (with-symbols {i j k l}
+    (let {[[$es $os] (even-and-odd-permutations 7)]}
+      (- (sum (map (lambda [$σ] (. R'_(σ 1)_j_1~i R'_(σ 2)_(σ 3)_k~j R'_(σ 4)_(σ 5)_l~k  R'_(σ 6)_(σ 7)_i~l)) es))
+         (sum (map (lambda [$σ] (. R'_(σ 1)_j_1~i R'_(σ 2)_(σ 3)_k~j R'_(σ 4)_(σ 5)_l~k  R'_(σ 6)_(σ 7)_i~l)) os))))))
+
+"S' start"
+S'
+"S' end"
 
 ;; Check
 
@@ -268,4 +278,3 @@ S
 "A-3-4-2"
 ;A-3-4-2
 "A-3-4-2"
-

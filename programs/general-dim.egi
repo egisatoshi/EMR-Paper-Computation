@@ -1,0 +1,37 @@
+(define $N 3)
+
+(define $J
+  (generate-tensor
+    (match-lambda [integer integer]
+      {[[$i ,(+ i N)] 1]
+       [[$i ,(- i N)] -1]
+       [[_ _] 0]})
+    {(* 2 N) (* 2 N)}))
+
+J
+
+(define $δ
+  (generate-tensor
+    (match-lambda [integer integer]
+      {[[$n ,n] 1]
+       [[_ _] 0]})
+    {(* 2 N) (* 2 N)}))
+
+δ
+
+(define $g δ)
+
+g
+
+(define $T_a_b_c~d
+  (+ (* -1 (. J_b_c J_a~d))
+     (. J_a_c J_b~d)
+     (* 2 (. J_a_b J_c~d))))
+
+(define $S'
+  (with-symbols {i j k}
+    (let {[[$es $os] (even-and-odd-permutations (* 2 N))]}
+      (- (sum (map (lambda [$σ] (foldl . 1 (map (lambda [$k] T_(σ (- (* 2 k) 1))_(σ (* 2 k))_[a_(modulo k N)]~[a_(- k 1)]) (between 1 N)))) es))
+         (sum (map (lambda [$σ] (foldl . 1 (map (lambda [$k] T_(σ (- (* 2 k) 1))_(σ (* 2 k))_[a_(modulo k N)]~[a_(- k 1)]) (between 1 N)))) os))))))
+
+S'
