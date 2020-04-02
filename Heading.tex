@@ -1,0 +1,187 @@
+\textwidth 6in
+\oddsidemargin.20in
+\evensidemargin.35in
+%\lineskip 1in
+%\baselineskip.55cm
+
+% Read in specially defined commands
+% Change margins and baselinestretch in draft mode
+\def\draft{
+% make margins smaller
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\topmargin}{-0.65in}
+\addtolength{\textheight}{1in}
+\addtolength{\textwidth}{1.5in}
+% A more reasonable baselinestretch, is still nearly doublespaced.
+\def\baselinestretch{1.4}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%              Theorems                               %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\theoremstyle{definition}
+%\theoremstyle{theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{rem}{Remark}[section]
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{exm}[thm]{Example}
+\newtheorem{notation}{Notation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%      Definitions and Commands                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\A}{{\mathbb A}}
+\newcommand{\Pdo}{{\Psi {\rm DO}}}
+\newcommand{\LT}{{L(S^3 \times S^1)}}
+\newcommand{\R}{{\mathbb R}}
+\newcommand{\G}{{\rm Ell}_0^*}
+\newcommand{\Q}{{\mathbb Q}}
+\newcommand{\C}{{\mathbb C}}
+\newcommand{\D}{{\mathbb D}}
+\newcommand{\Z}{{\mathbb Z}}
+\newcommand{\h}{{\mathbb H}}
+\newcommand{\CP}{{\mathbb C}{\mathbb P}}
+\newcommand{\I}{{\mathbb I}}
+\newcommand{\N}{{\mathbb N}}
+\newcommand{\Pf}{{\bf Proof: }}
+\newcommand{\1}{{\bf 1}}
+\newcommand{\acts}{{\circlearrowright}}
+\newcommand{\g}{{\mathfrak  g}}
+\newcommand{\uu}{{\mathfrak  u}}
+\renewcommand{\h}{{\mathfrak  h}}
+\newcommand{\ex}[1]{{e^{#1}}}
+%%
+\newcommand{\calA}{{\mathcal A}}
+\newcommand{\calB}{{\mathcal B}}
+\newcommand{\calC}{{\mathcal C}}
+\newcommand{\calD}{{\mathcal D}}
+\newcommand{\calE}{{\mathcal E}}
+\newcommand{\calF}{{\mathcal F}}
+\newcommand{\calG}{{\mathcal G}}
+\newcommand{\calH}{{\mathcal H}}
+\newcommand{\calI}{{\mathcal I}}
+\newcommand{\calK}{{\mathcal K}}
+\newcommand{\calM}{{\mathcal M}}
+\newcommand{\calO}{{\mathcal O}}
+\newcommand{\calP}{{\mathcal P}}
+\newcommand{\calR}{{\mathcal R}}
+\newcommand{\calS}{{\mathcal S}}
+\newcommand{\calL}{{\mathcal L}}
+\newcommand{\calX}{{\mathcal X}}
+\newcommand{\calU}{{\mathcal U}}
+\newcommand{\calV}{{\mathcal V}}
+\newcommand{\calZ}{{\mathcal Z}}
+%%
+\renewcommand{\to}{\longrightarrow}
+\newcommand{\dd}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\iso}{\stackrel{\simeq}{\longrightarrow}}
+\renewcommand{\iff}{\text{if and only if }}
+\newcommand{\spinc}{$\text{Spin}^c$}
+\newcommand{\Dirac}{\not\!\!D}
+\newcommand{\inc}{\hookrightarrow}
+%%
+\newcommand{\Ric}{\operatorname{Ric}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Hor}{\operatorname{Hor}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\ev}{\operatorname{ev}}
+\newcommand{\Map}{\operatorname{Map}}
+\newcommand{\Diff}{\operatorname{Diff}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Lie}{\operatorname{Lie}}
+\newcommand{\ad}{{\operatorname{ad\,}}}
+\newcommand{\sign}{{\operatorname{sign}}}
+\newcommand{\grad}{{\operatorname{grad}}}
+\newcommand{\coker}{{\operatorname{coker}}}
+\newcommand{\dett}{{\operatorname{det}}}
+%\newcommand{\ch}{{\operatorname{ch}}}
+\newcommand{\rk}{{\operatorname{rk}}}
+\newcommand{\maxx}{{\operatorname{max}}}
+\newcommand{\minn}{{\operatorname{min}}}
+\newcommand{\id}{{\operatorname{id}}}
+\newcommand{\ind}{{\operatorname{ind}}}
+\newcommand{\Ind}{{\operatorname{Ind}}}
+\newcommand{\spann}{{\operatorname{span}}}
+\newcommand{\Spin}{{\operatorname{Spin}}}
+\newcommand{\Pin}{{\operatorname{Pin}}}
+\newcommand{\im}{{\operatorname{Im}}}
+\renewcommand{\Im}{{\operatorname{Im}}}
+\newcommand{\dimm}{{\operatorname{dim}}}
+\newcommand{\cl}{{\operatorname{cl}}}
+\newcommand{\CL}{{\mathcal{CL}}}%%
+\newcommand{\tM}{{\tilde{M}}}
+\newcommand{\lieg}{{\mathfrak{g}_\mathcal{G}}}
+\newcommand{\tC}{{\tilde{C}}}
+\newcommand{\tE}{{\tilde{E}}}
+\newcommand{\tF}{{\tilde{F}}}
+\newcommand{\talpha}{{\tilde{\alpha}}}
+%%
+\newcommand{\lap}{\Delta}
+\newcommand{\weight}{(1+\Delta)^s}
+\newcommand{\weightinv}{(1+\Delta)^{-s}}
+\newcommand{\zbar}{\overline{z}}
+\newcommand{\wbar}{\overline{w}}
+\newcommand{\phibar}{\overline{\phi}}
+\newcommand{\psibar}{\overline{\psi}}
+\newcommand{\Bbar}{\overline{B}}
+\newcommand{\Cbar}{\overline{C}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\con}[2]{\nabla^{#1}_{#2}}
+\newcommand{\chris}[4]{\Gamma^{#1,(#4)}_{#2#3}}
+\newcommand{\trres}{P^{(-1)}}
+
+%%      
+\newcommand{\rb}[1]{\raisebox{0pt}[0pt][0pt]{#1}}
+
+\newsavebox{\savepar}
+\newenvironment{boxit}{\begin{lrbox}{\savepar}\begin{minipage}[b]{.5in}}
+{\end{minipage}\end{lrbox}\fbox{\usebox{\savepar}}}
+
+%%\newcommand{\ip}[1]{\langle\! #1 \! \rangle}
+\newcommand{\ip}[1]{\langle #1 \rangle}
+\newcommand{\norm}[1]{\| #1 \|}
+\newcommand{\comment}[1]{\marginpar{\tiny{#1}}}
+\newcommand{\printname}[1]{\smash{\makebox[0pt]{\hspace{-1.0in}\raisebox{8pt}{\tiny #1}}}}
+\newcommand{\labell}[1] {\label{#1}\printname{#1}}
+\newcommand{\bibitemm}[2]{\bibitem[#1]{#2}\mf{#2}}
+\newcommand{\Name}[1]  {\smallskip\noindent{\bf #1 \ }}
+\numberwithin{equation}{section}
+\renewcommand{\theequation}{{\thesection{.}}\arabic{equation}}
+\newcounter{dummy}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Printing of label keys
+%
+%  Label keys are printed (in a box) in the margin when the command
+%           \labelon (below)
+%  is activated.
+%  This feature makes it easier to find labels for \ref commands
+%  when working on draft.
+%
+\newcounter{labelflag} \setcounter{labelflag}{0}
+\newcommand{\labelon}{\setcounter{labelflag}{1}}
+\newcommand{\Label}[1]{
+                       \ifnum\thelabelflag=1
+                          \ifmmode
+                             \makebox[0in][l]{\qquad\fbox{\rm#1}}
+                          \else
+                             \marginpar{\vspace{0.7\baselineskip}
+                                        \hspace{-1.1\textwidth}
+                                        \fbox{\rm#1}}
+                          \fi
+                       \fi
+                       \label{#1}
+                      }
+\labelon
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
