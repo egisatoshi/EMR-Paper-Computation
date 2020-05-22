@@ -129,6 +129,7 @@ combinedEvenAndOddPermutations x y :=
 
 "Lambda 0 0"
 Λ 0 0
+-- 0
 
 CSW := sum (map (\α β -> debug (Λ (debug α) (debug β)))
                 (matchAllDFS [0..4] as set something with
