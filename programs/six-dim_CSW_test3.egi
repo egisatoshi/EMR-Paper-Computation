@@ -22,12 +22,9 @@ J_α :=
         [| 0, 0, 0, 0, 0, 0 |],
         [| 0, 0, 0, 0, 0, 0 |] |] |]
 
-ε := withSymbols [a, b, m] J_1_a~m . J_2_m_b - J_2_a~m . J_1_m_b
+ε := withSymbols [a, b, m] J_2_a~m . J_3_m_b - J_3_a~m . J_2_m_b
 ε_#_#
 ε~#~#
-
---"trace"
---trace (withSymbols [i, j, m1, m2] (J 1)_i~m1 . (J 2)_m1~m2 . (J 0)_m2_j)
 
 Ω_α_β_γ_a_b :=
   let (es, os) := evenAndOddPermutations 6 in
@@ -47,6 +44,6 @@ J_α :=
                       (-1 * J_γ_(σ 6)_b  . J_γ_(σ 5)~a4 + J_γ_(σ 5)_b  . J_γ_(σ 6)~a4 + 2 * J_γ_(σ 5)_(σ 6) . J_γ_b~a4))
              os)
 
-Ω_0_0_0_#_#
+Ω_1_1_1_#_#
 
-withSymbols [a, b] ε~a~b Ω_0_0_0_a_b
+withSymbols [a, b] ε~a~b Ω_1_1_1_a_b
