@@ -43,9 +43,29 @@ J α := match α as integer with
 
 ε_#_#
 
+"trace"
+trace ε_#_#
+
 --ε'_a1_a3 := (1 / 2) * (ε_a1_a3 + ε_a3_a1)
 --ε''_a1_a3 := (1 / 2) * (ε_a1_a3 - ε_a3_a1)
 --ε_#_# = ε'_#_#
+
+Ω α β :=
+  let (es, os) := evenAndOddPermutations 4 in
+    sum (map (\σ -> withSymbols [b, a1, a2, a3, a4]
+                      (-1 * (J α)_(σ 2)_a4 . (J α)_(σ 1)~a1 + (J α)_(σ 1)_a4 . (J α)_(σ 2)~a1 + 2 * (J α)_(σ 1)_(σ 2) . (J α)_a4~a1)
+                      .
+                      (-1 * (J β)_(σ 4)_a3 . (J β)_(σ 3)~a4 + (J β)_(σ 3)_a3 . (J β)_(σ 4)~a4 + 2 * (J β)_(σ 3)_(σ 4) . (J α)_a3~a4))
+             es)
+    -
+    sum (map (\σ -> withSymbols [b, a1, a2, a3, a4]
+                      (-1 * (J α)_(σ 2)_a4 . (J α)_(σ 1)~a1 + (J α)_(σ 1)_a4 . (J α)_(σ 2)~a1 + 2 * (J α)_(σ 1)_(σ 2) . (J α)_a4~a1)
+                      .
+                      (-1 * (J β)_(σ 4)_a3 . (J β)_(σ 3)~a4 + (J β)_(σ 3)_a3 . (J β)_(σ 4)~a4 + 2 * (J β)_(σ 3)_(σ 4) . (J α)_a3~a4))
+             os)
+
+"Ω 0 0"
+Ω 0 0
 
 combinedEvenAndOddPermutations x y :=
   let (es1, os1) := evenAndOddPermutations x in

@@ -32,7 +32,7 @@ J_α :=
       [| φ2', 0, 0, φ3' |],
       [| 0, -1 * φ2', -1 * φ3', 0 |]|]|]_α
 
-φ3' := (-1 * φ2 * φ2') / φ3
+--φ3' := (-1 * φ2 * φ2') / φ3
 
 assertEqual "J_1^2" (withSymbols [i]  J_1_#_i . J_1~i_#) (-1 * I)
 assertEqual "J_2^2" (withSymbols [i]  J_2_#_i . J_2~i_#) (-1 * I)
@@ -43,9 +43,11 @@ assertEqual "J_1 J_2 + J_2 J_1" (withSymbols [i, j, k]  J_1_i_j . J_2~j_k + J_2_
 assertEqual "J_1 J_3 + J_3 J_1" (withSymbols [i, j, k]  J_1_i_j . J_3~j_k + J_3_i_j . J_1~j_k) Z
 assertEqual "J_2 J_3 + J_3 J_2" (withSymbols [i, j, k]  J_2_i_j . J_3~j_k + J_3_i_j . J_2~j_k) (2 * φ2 * I)
 assertEqual "J_2 J_4 + J_4 J_2" (withSymbols [i, j, k]  J_2_i_j . J_4~j_k + J_4_i_j . J_2~j_k) (2 * φ2' * I)
-assertEqual "J_3 J_4 + J_4 J_3" (withSymbols [i, j, k]  J_3_i_j . J_4~j_k + J_4_i_j . J_3~j_k) Z
---assertEqual "J_3 J_4 + J_4 J_3" (withSymbols [i, j, k]  J_3_i_j . J_4~j_k + J_4_i_j . J_3~j_k) (-2 * (φ2 * φ2' + φ3 * φ3') * I)
+--assertEqual "J_3 J_4 + J_4 J_3" (withSymbols [i, j, k]  J_3_i_j . J_4~j_k + J_4_i_j . J_3~j_k) Z
+assertEqual "J_3 J_4 + J_4 J_3" (withSymbols [i, j, k]  J_3_i_j . J_4~j_k + J_4_i_j . J_3~j_k) (-2 * (φ2 * φ2' + φ3 * φ3') * I)
 
+"product"
+J_1_a~b . J_2_b~c . J_3_c~d . J_4_d~e
 
 combinedEvenAndOddPermutations x y :=
   let (es1, os1) := evenAndOddPermutations x in
@@ -75,22 +77,22 @@ combinedEvenAndOddPermutations x y :=
 
 CSW :=
   let (es, os) := combinedEvenAndOddPermutations 4 4 in
-    map (\σ -> withSymbols [b, a1, a2, a3, a4]
-                 (J_(σ 1)_a2~b . J_(σ 1)_b_a1) . (J_(σ 3)~a3~b . J_(σ 4)_b~a2) .
-                 (sum (map (\α β -> (-1 * J_α_(σ 6)_a4 . J_α_(σ 5)~a1 + J_α_(σ 5)_a4 . J_α_(σ 6)~a1 + 2 * J_α_(σ 5)_(σ 6) . J_α_a4~a1)
-                                    *
-                                    (-1 * J_β_(σ 8)_a3 . J_β_(σ 7)~a4 + J_β_(σ 7)_a3 . J_β_(σ 8)~a4 + 2 * J_β_(σ 7)_(σ 8) . J_α_a3~a4))
-                           (matchAllDFS [1..4] as set something with
-                            | $α :: $β :: _ -> (α, β)))))
-        es
+    sum (map (\σ -> withSymbols [b, a1, a2, a3, a4]
+                      (J_(σ 1)_a2~b . J_(σ 1)_b_a1) . (J_(σ 3)~a3~b . J_(σ 4)_b~a2) .
+                      (sum (map (\α β -> (-1 * J_α_(σ 6)_a4 . J_α_(σ 5)~a1 + J_α_(σ 5)_a4 . J_α_(σ 6)~a1 + 2 * J_α_(σ 5)_(σ 6) . J_α_a4~a1)
+                                         *
+                                         (-1 * J_β_(σ 8)_a3 . J_β_(σ 7)~a4 + J_β_(σ 7)_a3 . J_β_(σ 8)~a4 + 2 * J_β_(σ 7)_(σ 8) . J_α_a3~a4))
+                                (matchAllDFS [1..4] as set something with
+                                 | $α :: $β :: _ -> (α, β)))))
+             es)
     -
-    map (\σ -> withSymbols [b, a1, a2, a3, a4]
-                 (J_(σ 1)_a2~b . J_(σ 1)_b_a1) . (J_(σ 3)~a3~b . J_(σ 4)_b~a2) .
-                 (sum (map (\α β -> (-1 * J_α_(σ 6)_a4 . J_α_(σ 5)~a1 + J_α_(σ 5)_a4 . J_α_(σ 6)~a1 + 2 * J_α_(σ 5)_(σ 6) . J_α_a4~a1)
-                                    *
-                                    (-1 * J_β_(σ 8)_a3 . J_β_(σ 7)~a4 + J_β_(σ 7)_a3 . J_β_(σ 8)~a4 + 2 * J_β_(σ 7)_(σ 8) . J_α_a3~a4))
-                           (matchAllDFS [1..4] as set something with
-                            | $α :: $β :: _ -> (α, β)))))
-        os
+    sum (map (\σ -> withSymbols [b, a1, a2, a3, a4]
+                      (J_(σ 1)_a2~b . J_(σ 1)_b_a1) . (J_(σ 3)~a3~b . J_(σ 4)_b~a2) .
+                      (sum (map (\α β -> (-1 * J_α_(σ 6)_a4 . J_α_(σ 5)~a1 + J_α_(σ 5)_a4 . J_α_(σ 6)~a1 + 2 * J_α_(σ 5)_(σ 6) . J_α_a4~a1)
+                                         *
+                                         (-1 * J_β_(σ 8)_a3 . J_β_(σ 7)~a4 + J_β_(σ 7)_a3 . J_β_(σ 8)~a4 + 2 * J_β_(σ 7)_(σ 8) . J_α_a3~a4))
+                                (matchAllDFS [1..4] as set something with
+                                 | $α :: $β :: _ -> (α, β)))))
+             os)
 
 CSW

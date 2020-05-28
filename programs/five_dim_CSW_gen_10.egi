@@ -65,6 +65,13 @@ trace ε_#_# -- 0
 --ε''_a1_a3 := (1 / 2) * (ε_a1_a3 - ε_a3_a1)
 --ε_#_# = ε'_#_#
 
+"formula 1"
+(ε_1_1 + ε_2_2) * θ3^3 * φ3
+
+"formula 2"
+(ε_3_3 + ε_4_4) * θ3 * φ3^3
+
+
 Ω α β :=
   let (es, os) := evenAndOddPermutations 4 in
     sum (map (\σ -> withSymbols [b, a1, a2, a3, a4]

@@ -1,0 +1,33 @@
+N := 6
+
+Z := generateTensor (\i j -> 0) [N, N]
+
+J n :=
+  match n as integer with
+  | #0 -> [| [| 0, 0, 0, -1, 0, 0 |],
+             [| 0, 0, 0, 0, -1, 0 |],
+             [| 0, 0, 0, 0, 0, -1 |],
+             [| 1, 0, 0, 0, 0, 0 |],
+             [| 0, 1, 0, 0, 0, 0 |],
+             [| 0, 0, 1, 0, 0, 0 |] |]
+  | #1 -> generateTensor
+            (\match as (integer, integer) with
+               | ($i, #i) -> 0
+               | ($i, ?(\j -> i < j) & $j) -> a_i_j
+               | ($i, $j) -> -1 * a_j_i)
+            [N, N]
+  | #2 -> generateTensor
+            (\match as (integer, integer) with
+               | ($i, #i) -> 0
+               | ($i, ?(\j -> i < j) & $j) -> b_i_j
+               | ($i, $j) -> -1 * b_j_i)
+            [N, N]
+
+--(J 0)
+--(J 1)
+--(J 2)
+
+ε := withSymbols [a, b, m] J_1_a~m . J_2_m_b - J_2_a~m . J_1_m_b
+
+"trace"
+trace (withSymbols [i, j, m1, m2] (J 1)_i~m1 . (J 2)_m1~m2 . (J 0)_m2_j)
