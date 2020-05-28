@@ -50,3 +50,8 @@ J_α :=
 
 withSymbols [a, b] ε~a~b . Ω_1_1_1_a_b
 -- 512
+
+sum (map (\α β γ -> withSymbols [a, b] ε~a~b . Ω_1_1_1_a_b)
+         (matchAll [1, 2, 3] as set something with
+            | $α :: $β :: $γ  :: _ -> (α, β, γ)))
+-- -13824
