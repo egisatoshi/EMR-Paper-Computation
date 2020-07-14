@@ -7,8 +7,8 @@
 
 ## How to run computations
 ```
-$ egison -t program/top-term.egi
+$ egison -no-normalize -t program/top-term.egi
 ...
-$ egison -t program/thurston.egi
+$ egison -no-normalize -t program/thurston.egi
 ...
 ```
