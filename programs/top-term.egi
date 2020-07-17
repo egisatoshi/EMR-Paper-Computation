@@ -1,24 +1,25 @@
 ---
---- Calculation of the coefficient of the highest power of p (Theorem 3.5)
+--- Calculation of the coefficient of the highest power of p (Theorem 3.4)
 ---
 
-k := 1
---k := 2
+k := 2
+--k := 3
+--k := 4
 
 J :=
   generateTensor
     (\match as (integer, integer) with
-       | ($i, #(i + 2 * k)) -> 1
-       | ($i, #(i - 2 * k)) -> -1
+       | ($i, #(i + k)) -> 1
+       | ($i, #(i - k)) -> -1
        | _ -> 0)
-    [4 * k, 4 * k]
+    [2 * k, 2 * k]
 
 δ :=
   generateTensor
     (\match as (integer, integer) with
        | ($i, #i) -> 1
        | _ -> 0)
-    [4 * k, 4 * k]
+    [2 * k, 2 * k]
 
 g := δ
 
@@ -29,10 +30,11 @@ T_a_b_c~d :=
 
 S' :=
   withSymbols [a]
-    let (es, os) := evenAndOddPermutations (4 * k) in
-      sum (map (\σ -> debug (foldl (.) 1 (map (\i -> T_(σ (2 * i - 1))_(σ (2 * i))_(a_(modulo i (2 * k)))~(a_(i - 1))) (between 1 (2 * k))))) es) -
-      sum (map (\σ -> debug (foldl (.) 1 (map (\i -> T_(σ (2 * i - 1))_(σ (2 * i))_(a_(modulo i (2 * k)))~(a_(i - 1))) (between 1 (2 * k))))) os)
+    let (es, os) := evenAndOddPermutations (2 * k) in
+      sum (map (\σ -> foldl (.) 1 (map (\i -> T_(σ (2 * i - 1))_(σ (2 * i))_(a_(modulo i k))~(a_(i - 1))) (between 1 k))) es) -
+      sum (map (\σ -> foldl (.) 1 (map (\i -> T_(σ (2 * i - 1))_(σ (2 * i))_(a_(modulo i k))~(a_(i - 1))) (between 1 k))) os)
 
 S'
--- return 192   when k = 1 in 1 second.
--- return 61440 when k = 2 in 1 hour.
+-- return 192   when k = 2 in 1 second.
+-- return 0     when k = 3 in 18 seconds.
+-- return 61440 when k = 4 in 1 hour.
