@@ -14,15 +14,6 @@ J :=
        | _ -> 0)
     [2 * k, 2 * k]
 
-δ :=
-  generateTensor
-    (\match as (integer, integer) with
-       | ($i, #i) -> 1
-       | _ -> 0)
-    [2 * k, 2 * k]
-
-g := δ
-
 T_a_b_c~d :=
   -1 * J_b_c . J_a~d +
   J_a_c . J_b~d +
