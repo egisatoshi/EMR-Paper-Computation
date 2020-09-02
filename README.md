@@ -4,6 +4,7 @@
 
 * [top-term.egi](https://github.com/egisatoshi/EMR-Paper-Computation/blob/master/program/top-term.egi): Calculation of the coefficient of the highest power of p (Theorem 3.4).
 * [thurston.egi](https://github.com/egisatoshi/EMR-Paper-Computation/blob/master/program/thurston.egi): Calculation of the Wodzicki-Chern-Simons invariant on the Thurston example (Section 4).
+  - [Thurston-Calculation.pdf](https://github.com/egisatoshi/EMR-Paper-Computation/blob/master/pdf/Thurston-Calculation.pdf)
 
 ## How to run computations
 
