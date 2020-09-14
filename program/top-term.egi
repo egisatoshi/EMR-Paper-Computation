@@ -2,24 +2,37 @@
 --- Calculation of the coefficient of the highest power of p (Theorem 3.4)
 ---
 
-k := 2
---k := 3
---k := 4
+def k := 2
+--def k := 3
+--def k := 4
 
-J :=
+def J :=
   generateTensor
-    (\match as (integer, integer) with
+    (\i j -> match (i, j) as (integer, integer) with
        | ($i, #(i + k)) -> 1
        | ($i, #(i - k)) -> -1
        | _ -> 0)
     [2 * k, 2 * k]
 
-T_a_b_c~d :=
+J
+J_a~c . J_c~b
+
+def S :=
+  withSymbols [a]
+    let (es, os) := evenAndOddPermutations (2 * k) in
+      sum (map (\σ -> foldl (.) 1 (map (\i -> J_(σ (2 * i - 1))_(σ (2 * i))) (between 1 k))) es) -
+      sum (map (\σ -> foldl (.) 1 (map (\i -> J_(σ (2 * i - 1))_(σ (2 * i))) (between 1 k))) os)
+
+S
+-- return -8  when k = 2
+-- return 384 when k = 4
+
+def T_a_b_c~d :=
   -1 * J_b_c . J_a~d +
   J_a_c . J_b~d +
   2 * J_a_b . J_c~d
 
-S' :=
+def S' :=
   withSymbols [a]
     let (es, os) := evenAndOddPermutations (2 * k) in
       sum (map (\σ -> foldl (.) 1 (map (\i -> T_(σ (2 * i - 1))_(σ (2 * i))_(a_(modulo i k))~(a_(i - 1))) (between 1 k))) es) -
