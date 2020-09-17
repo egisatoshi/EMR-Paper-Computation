@@ -1,0 +1,73 @@
+---
+--- Calculation of the coefficient of the highest power of p (Theorem 3.4)
+---
+
+def k := 2
+--def k := 3
+--def k := 4
+
+def δ := unitTensor [2 * k, 2 * k]
+
+def J :=
+  generateTensor
+    (\i j -> match (i, j) as (integer, integer) with
+       | ($i, #(i + k)) -> 1
+       | ($i, #(i - k)) -> -1
+       | _ -> 0)
+    [2 * k, 2 * k]
+
+J
+J_a~c . J_c~b
+
+def C1 := -2 *
+  (withSymbols [a1, a2, a3]
+     let (es, os) := evenAndOddPermutations (2 * k) in
+       sum (map (\σ -> J_(σ 2)_a2 . J_(σ 1)~a1 . J_(σ 3)_(σ 4) . J_a3~a2 . δ_a1~a3) es) -
+       sum (map (\σ -> J_(σ 2)_a2 . J_(σ 1)~a1 . J_(σ 3)_(σ 4) . J_a3~a2 . δ_a1~a3) os))
+
+"C1"
+C1
+-- 16
+
+def C2 := 2 *
+  (withSymbols [a1, a2, a3]
+     let (es, os) := evenAndOddPermutations (2 * k) in
+       sum (map (\σ -> J_(σ 1)_a2 . J_(σ 2)~a1 . J_(σ 3)_(σ 4) . J_a3~a2 . δ_a1~a3) es) -
+       sum (map (\σ -> J_(σ 1)_a2 . J_(σ 2)~a1 . J_(σ 3)_(σ 4) . J_a3~a2 . δ_a1~a3) os))
+
+"C2"
+C2
+-- 16
+
+def C3 := -2 *
+  (withSymbols [a1, a2, a3]
+     let (es, os) := evenAndOddPermutations (2 * k) in
+       sum (map (\σ -> J_(σ 1)_(σ 2) . J_a2~a1 . J_(σ 4)_a3 . J_(σ 3)~a2 . δ_a1~a3) es) -
+       sum (map (\σ -> J_(σ 1)_(σ 2) . J_a2~a1 . J_(σ 4)_a3 . J_(σ 3)~a2 . δ_a1~a3) os))
+
+"C3"
+C3
+-- 16
+
+def C4 := 2 *
+  (withSymbols [a1, a2, a3]
+     let (es, os) := evenAndOddPermutations (2 * k) in
+       sum (map (\σ -> J_(σ 1)_(σ 2) . J_a2~a1 . J_(σ 3)_a3 . J_(σ 4)~a2 . δ_a1~a3) es) -
+       sum (map (\σ -> J_(σ 1)_(σ 2) . J_a2~a1 . J_(σ 3)_a3 . J_(σ 4)~a2 . δ_a1~a3) os))
+
+"C4"
+C4
+-- 16
+
+def C5 := 4 *
+  (withSymbols [a1, a2, a3]
+     let (es, os) := evenAndOddPermutations (2 * k) in
+       sum (map (\σ -> J_(σ 1)_(σ 2) . J_a2~a1 . J_(σ 3)_(σ 4) . J_a3~a2 . δ_a1~a3) es) -
+       sum (map (\σ -> J_(σ 1)_(σ 2) . J_a2~a1 . J_(σ 3)_(σ 4) . J_a3~a2 . δ_a1~a3) os))
+
+"C5"
+C5
+-- 128
+
+C1 + C2 + C3 + C4 + C5
+-- 192

@@ -2,9 +2,9 @@
 --- Calculation of the coefficient of the highest power of p (Theorem 3.4)
 ---
 
-def k := 2
+--def k := 2
 --def k := 3
---def k := 4
+def k := 4
 
 def J :=
   generateTensor
