@@ -1,0 +1,32 @@
+---
+--- Calculation of the coefficient of the highest power of p (Theorem 3.4)
+---
+
+def J :=
+  [| [| 0, 0, 1, 0 |],
+     [| 0, 0, 0, 1 |],
+     [| -1, 0, 0, 0 |],
+     [| 0, -1, 0, 0 |] |]
+
+def S :=
+  withSymbols [a]
+    let (es, os) := evenAndOddPermutations 4 in
+      sum (map (\σ -> J_(σ 1)_(σ 2) . J_(σ 3)_(σ 4)) es) -
+      sum (map (\σ -> J_(σ 1)_(σ 2) . J_(σ 3)_(σ 4)) os)
+
+S
+-- return -8
+
+def T_a_b_c~d :=
+  -1 * J_b_c . J_a~d +
+  J_a_c . J_b~d +
+  2 * J_a_b . J_c~d
+
+def S' :=
+  withSymbols [a1, a2]
+    let (es, os) := evenAndOddPermutations 4 in
+      sum (map (\σ -> T_(σ 1)_(σ 2)_a2~a1 . T_(σ 3)_(σ 4)_a1~a2) es) -
+      sum (map (\σ -> T_(σ 1)_(σ 2)_a2~a1 . T_(σ 3)_(σ 4)_a1~a2) os)
+
+S'
+-- return 192

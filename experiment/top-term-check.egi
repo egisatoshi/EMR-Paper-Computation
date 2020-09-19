@@ -2,9 +2,9 @@
 --- Calculation of the coefficient of the highest power of p (Theorem 3.4)
 ---
 
-def k := 2
+--def k := 2
 --def k := 3
---def k := 4
+def k := 4
 
 def δ := unitTensor [2 * k, 2 * k]
 
@@ -18,6 +18,26 @@ def J :=
 
 J
 J_a~c . J_c~b
+
+
+--def C0 :=
+--  let (es, os) := evenAndOddPermutations (2 * k) in
+--    sum (map (\σ -> J_(σ 1)_(σ 2) . J_(σ 3)_(σ 4)) es) -
+--    sum (map (\σ -> J_(σ 1)_(σ 2) . J_(σ 3)_(σ 4)) os)
+--
+--"C0"
+--C0
+---- -8
+
+def C0 :=
+  let (es, os) := evenAndOddPermutations (2 * k) in
+    sum (map (\σ -> J_(σ 1)_(σ 2) . J_(σ 3)_(σ 4) . J_(σ 5)_(σ 6) . J_(σ 7)_(σ 8)) es) -
+    sum (map (\σ -> J_(σ 1)_(σ 2) . J_(σ 3)_(σ 4) . J_(σ 5)_(σ 6) . J_(σ 7)_(σ 8)) os)
+
+"C0"
+C0
+-- 16
+
 
 def C1 := -2 *
   (withSymbols [a1, a2, a3]
@@ -71,3 +91,11 @@ C5
 
 C1 + C2 + C3 + C4 + C5
 -- 192
+
+def R'_a_b_c~d := -1 * J_b_c . J_a~d + J_a_c . J_b~d + 2 * J_a_b . J_c~d
+
+def S := -2 *
+  (withSymbols [a1, a2, a3]
+     let (es, os) := evenAndOddPermutations (2 * k) in
+       sum (map (\σ -> R'_(σ 1)_(σ 2)_a2~a1 . R'_(σ 3)_(σ 4)_a1~a2) es) -
+       sum (map (\σ -> R'_(σ 1)_(σ 2)_a2~a1 . R'_(σ 3)_(σ 4)_a1~a2) os))
