@@ -31,12 +31,17 @@ def S' :=
 S'
 -- return 192
 
+def δ :=
+  [| [| 1, 0, 0, 0 |],
+     [| 0, 1, 0, 0 |],
+     [| 0, 0, 1, 0 |],
+     [| 0, 0, 0, 1 |] |]
 
 def S'' :=
   withSymbols [a1, a2, a3]
     let (es, os) := evenAndOddPermutations 4 in
-      sum (map (\σ -> T_1_a1_1~a3 . T_(σ 1)_(σ 2)_a2~a1 . T_(σ 3)_(σ 4)_a3~a2) es) -
-      sum (map (\σ -> T_1_a1_1~a3 . T_(σ 1)_(σ 2)_a2~a1 . T_(σ 3)_(σ 4)_a3~a2) os)
+      sum (map (\σ -> -1 * δ_a1~a3 . T_(σ 1)_(σ 2)_a2~a1 . T_(σ 3)_(σ 4)_a3~a2) es) -
+      sum (map (\σ -> -1 * δ_a1~a3 . T_(σ 1)_(σ 2)_a2~a1 . T_(σ 3)_(σ 4)_a3~a2) os)
 
 S''
--- return 144
+-- return -192
